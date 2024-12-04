@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "dyuthi";
+  src: url("/fonts/Dyuthi-Regular.woff2") format('woff2'),
+       url("/fonts/Dyuthi-Regular.ttf") format('truetype'),
+       url("/fonts/Dyuthi-Regular.woff") format('woff');
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+.dyuthi {
+  font-family: "dyuthi";
+}
