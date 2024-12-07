@@ -11,7 +11,9 @@ export async function POST(request: Request) {
   const myEmail = process.env.NEXT_PUBLIC_MY_EMAIL;
 
   const transport = nodemailer.createTransport({
-    service: 'gmail',
+    host: process.env.NODEMAILER_HOST,
+    port: Number(process.env.NODEMAILER_PORT),
+    secure: Number(process.env.NODEMAILER_PORT) === 465,
     auth: {
       user: myEmail,
       pass: password,
@@ -20,7 +22,8 @@ export async function POST(request: Request) {
   });
 
   const mailOptions: Mail.Options = {
-    from: email,
+    from: myEmail,
+    replyTo: email,
     to: myEmail,
     // cc: email, (uncomment this line if you want to send a copy to the sender)
     subject: `Message from ${name} (${email})`,
@@ -42,6 +45,7 @@ export async function POST(request: Request) {
     await sendMailPromise();
     return NextResponse.json({ message: 'Email sent' });
   } catch (err) {
+    console.error("Error found", err);
     throw err;
   }
 }

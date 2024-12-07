@@ -53,7 +53,7 @@ export default function ContactUs() {
               <ContactUsTitle />
 
               <ContactUsEmail />
-
+              <ContactUsForm />
               {/* Form */}
               </div>
           </div>

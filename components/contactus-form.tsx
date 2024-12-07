@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { useClientMediaQuery } from '@/hooks/useClientMediaQuery'
 
 
-import localFont from '@next/font/local'
+import localFont from 'next/font/local'
 
 const dyuthi = localFont({
   src: [
