@@ -1,14 +1,16 @@
-import { Html, Heading, Text } from "@react-email/components"
-const EmailTemplate = ({
+import * as React from 'react';
+
+interface EmailTemplateProps {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   name,
   email,
-  message
-}: {
-  name: string
-  email: string
-  message: string
-}) => {
-  return (
+  message,
+}) => (
     <Html lang="en">
       <Heading as="h1">New Form Submission</Heading>
       <Text>You just submitted a form. Here are the details:</Text>
@@ -16,6 +18,4 @@ const EmailTemplate = ({
       <Text>Email: {email}</Text>
       <Text>Message: {message}</Text>
     </Html>
-  )
-}
-export default EmailTemplate
+);

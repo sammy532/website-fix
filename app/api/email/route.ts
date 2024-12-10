@@ -1,47 +1,26 @@
-import nodemailer from 'nodemailer';
-import { NextRequest, NextResponse } from "next/server";
+import { EmailTemplate } from '../../../components/EmailTemplate';
+import { Resend } from 'resend';
 
-
-import Mail from 'nodemailer/lib/mailer';
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
-  const { email, name, message} = await request.json();
-
-  const password = process.env.NEXT_PUBLIC_MY_PASSWORD;
-  const myEmail = process.env.NEXT_PUBLIC_MY_EMAIL;
-
-  const transport = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: myEmail,
-      pass: password,
-    },
-    tls: { rejectUnauthorized: false }
-  });
-
-  const mailOptions: Mail.Options = {
-    from: email,
-    to: myEmail,
-    // cc: email, (uncomment this line if you want to send a copy to the sender)
-    subject: `Message from ${name} (${email})`,
-    text: `Message content: ${message}`,
-  };
-
-  const sendMailPromise = () =>
-    new Promise<string>((resolve, reject) => {
-      transport.sendMail(mailOptions, function (err) {
-        if (!err) {
-          resolve('Email sent');
-        } else {
-          reject(err.message);
-        }
-      });
+  const { email, name, message } = await request.json();
+  console.log("email: ", email)
+  try {
+    const { data, error } = await resend.emails.send({
+      from: 'blaga.davidova@gmail.com',
+      to: 'blaga.davidova@gmail.com',
+      subject: 'Hello world',
+      react: EmailTemplate({ name: 'John', email: "some email" , message: "some message" }),
     });
 
-  try {
-    await sendMailPromise();
-    return NextResponse.json({ message: 'Email sent' });
-  } catch (err) {
-    throw err;
+    if (error) {
+      console.log("error: ", error)
+      return Response.json({ error }, { status: 500 });
+    }
+
+    return Response.json(data);
+  } catch (error) {
+    return Response.json({ error }, { status: 500 });
   }
 }
