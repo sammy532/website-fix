@@ -3,15 +3,16 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+console.log("resend: ", resend)
+
 export async function POST(request: Request) {
   const { email, name, message } = await request.json();
-  console.log("email: ", email)
   try {
     const { data, error } = await resend.emails.send({
-      from: 'blaga.davidova@gmail.com',
-      to: 'blaga.davidova@gmail.com',
-      subject: 'Hello world',
-      react: EmailTemplate({ name: 'John', email: "some email" , message: "some message" }),
+      from: 'support@travenue.org',
+      to: ['support@travenue.org'],
+      subject: `Message from ${name} (${email})`,
+      react: EmailTemplate({ name: name, email: email, message: message }),
     });
 
     if (error) {
@@ -21,6 +22,7 @@ export async function POST(request: Request) {
 
     return Response.json(data);
   } catch (error) {
+    console.log("error: ", error)
     return Response.json({ error }, { status: 500 });
   }
 }
