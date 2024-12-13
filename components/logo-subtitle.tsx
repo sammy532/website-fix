@@ -1,8 +1,25 @@
 'use client'
 
-import "../global.css";
 
 import { useClientMediaQuery } from '@/hooks/useClientMediaQuery'
+
+import localFont from 'next/font/local'
+//
+// const dyuthi = localFont({
+//   src: [
+//     {
+//       path: '../public/fonts/Dyuthi-Regular.ttf',
+//     },
+//     {
+//       path: '../public/fonts/Dyuthi-Regular.woff',
+//     },
+//     {
+//       path: '../public/fonts/Dyuthi-Regular.woff2',
+//     }
+//   ],
+//   variable: '--font-dyuthi'
+// })
+
 
 export default function LogoSubtitle() {
   const isMobile = useClientMediaQuery('(max-width: 600px)')

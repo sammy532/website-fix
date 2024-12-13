@@ -1,3 +1,4 @@
+
 import './css/style.css'
 
 import type { Metadata } from 'next'
@@ -10,14 +11,12 @@ import Header from '@/components/ui/header'
 import Banner from '@/components/banner'
 import Footer from '@/components/ui/footer'
 
-import localFont from '@next/font/local'
+import localFont from "next/font/local";
 
 const dyuthi = localFont({
   src: [
     {
       path: '../public/fonts/Dyuthi-Regular.ttf',
-      weight: '800',
-      color: "text-blue-200"
     }
   ],
   variable: '--font-dyuthi'
@@ -44,7 +43,6 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/icon.png',
-    favicon: '*/icon.ico',
     shortcut: '/icon.png',
     apple: '/icon.png',
     other: {

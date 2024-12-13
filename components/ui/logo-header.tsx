@@ -15,7 +15,7 @@ export default function LogoHeader() {
           <div className="shrink-0 mr-4">
             {/* Logo */}
             <Link href="/"  aria-label="Cruip">
-              <Image className={isMobile ? "mt-8 w-14" : "xs:mt-10 sm:mt-10 md:mt-40 lg:mt-40  xs:w-16 sm:w-18 md:w-32 lg:w-52"}
+              <Image className={"w-14 xs:mt-10 sm:mt-10 md:mt-40 lg:mt-40  xs:w-16 sm:w-18 md:w-32 lg:w-52"}
                     src={logo}
                     alt="logo"
                     />

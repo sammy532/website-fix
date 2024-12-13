@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { useClientMediaQuery } from '@/hooks/useClientMediaQuery'
 
 
-import localFont from '@next/font/local'
+import localFont from 'next/font/local'
 
 const dyuthi = localFont({
   src: [
@@ -37,7 +37,7 @@ export default function ContactUsForm() {
 
     try {
       // Your Api call or server action here, simulating a server request below
-      const response = await fetch('/api/email', {
+      const response = await fetch('https://first-worker.blaga-davidova.workers.dev/', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

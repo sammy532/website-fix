@@ -9,6 +9,23 @@ import LogoTitle from "./logo-title"
 import LogoSubtitle from "./logo-subtitle"
 import DemoButton from "./demo-button"
 
+import localFont from 'next/font/local'
+
+const dyuthi = localFont({
+  src: [
+    {
+      path: '../public/fonts/Dyuthi-Regular.ttf',
+    },
+    {
+      path: '../public/fonts/Dyuthi-Regular.woff',
+    },
+    {
+      path: '../public/fonts/Dyuthi-Regular.woff2',
+    }
+  ],
+  variable: '--font-dyuthi'
+})
+
 export default function Hero() {
   useEffect(() => {
      AOS.init({ duration: 2000 })

@@ -18,7 +18,7 @@ const nextConfig = {
     },
   env: {
     NEXT_PUBLIC_MY_EMAIL: 'support@travenue.org',
-    NEXT_PUBLIC_MY_PASSWORD: 'my pass',
+    RESEND_API_KEY: 're_HmLBwmKv_55aMDDxiFJbWbJkLLaVKnmFo',
   },
   async rewrites() {
         return [
@@ -32,27 +32,14 @@ const nextConfig = {
     return [
       {
         // Routes this applies to
-        source: "/api/(.*)",
+        source: "/api/email",
         // Headers
         headers: [
-          // Allow for specific domains to have access or * for all
-          {
-            key: "Access-Control-Allow-Origin",
-            value: "*",
-            // DOES NOT WORK
-            // value: process.env.ALLOWED_ORIGIN,
-          },
-          // Allows for specific methods accepted
-          {
-            key: "Access-Control-Allow-Methods",
-            value: "GET, POST, PUT, DELETE, OPTIONS",
-          },
-          // Allows for specific headers accepted (These are a few standard ones)
-          {
-            key: "Access-Control-Allow-Headers",
-            value: "Content-Type, Authorization",
-          },
-        ],
+                    { key: "Access-Control-Allow-Credentials", value: "true" },
+                    { key: "Access-Control-Allow-Origin", value: "https://www.travenue.org/*" }, // replace this your actual origin
+                    { key: "Access-Control-Allow-Methods", value: "GET,DELETE,PATCH,POST,PUT" },
+                    { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
+                ],
       },
     ];
   },

@@ -11,6 +11,18 @@ import FEED from "../public/icons/feed.svg";
 import DETAILS from "../public/icons/details.svg";
 
 
+import localFont from 'next/font/local'
+
+// const dyuthi = localFont({
+//   src: [
+//     {
+//       path: '../public/fonts/Dyuthi-Regular.ttf',
+//     }
+//   ],
+//   variable: '--font-dyuthi'
+// })
+
+
 export default function Features() {
   return (
     <section>
